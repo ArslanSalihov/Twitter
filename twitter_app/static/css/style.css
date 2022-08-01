@@ -1,0 +1,222 @@
+body{
+    margin: 0;
+    display: flex;
+}
+.navbar{
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    border-right: 0.5px grey solid;
+}
+.navbar_li{
+    list-style: none;
+    font-size: 20px;
+    padding: 15px;
+    border-radius: 20px;
+    width: max-content;
+    cursor: pointer;
+}
+.navbar_li:hover{
+    background-color: lightgray;
+}
+.navbar_icon-widget{
+    padding: 15% 0 0 0;
+}
+.navbar_ico{
+    width: 45px;
+    margin-left: 35px;
+}
+.navbar-menu{
+    padding: 0;
+}
+.navbar_img{
+    width: 20px;
+    padding: 0 5px 0 0;
+}
+.send-ad{
+    padding: 12px 45px;
+    background-color: rgb(29, 155, 240);
+    border: none;
+    color: white;
+    font-size: large;
+    border-radius: 20px;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+.send-ad:hover{
+    background-color: white;
+    color: rgb(29, 155, 240);
+    outline: 3px rgb(29, 155, 240) solid;
+}
+.navbar_li a{
+    color: black;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+.container{
+    width: 50%;
+    margin: 0 3%;
+}
+.container-widget{
+    display: block;
+}
+.container-head{
+    padding: 0 3%;
+}
+.container-head-widget{
+    display: flex;
+    align-items: center;
+}
+.container-input{
+    padding: 8px 20px 8px 8px;
+    width: 60%;
+    margin-bottom: 2%;
+    border-radius: 10px;
+    border: solid grey 0.5px;   
+}
+.container-input:focus{
+    border: none;
+    outline: 3px rgb(29, 155, 240) solid;
+    padding: 9px 22px 9px 9px;
+}
+.image-icon{
+    width: 20px;
+    cursor: pointer;
+}
+.user-icon{
+    width: 40px;
+}
+.container-head-btn-widget{
+    display: flex;
+    margin: 1% 0 0 0;
+    justify-content: space-between;
+}
+.container-head-btn{
+    background-color: rgb(29, 155, 240);
+    border: none;
+    color: white;
+    border-radius: 20px;
+    transition: all 0.3s;
+    padding: 10px 25px;
+    cursor: pointer;
+    align-items: center;
+}
+.container-head-btn:hover{
+    background-color: white;
+    color: rgb(29, 155, 240);
+    outline: 3px rgb(29, 155, 240) solid;
+}
+.container-head-widget-block{
+    margin: 1%;
+}
+.twitter-card{
+    display: flex;
+    border-top: 0.5px gray solid;
+    margin: 2% 0 0 1%;
+    padding: 2% 0 0 1%;
+}
+.twitter-card-body-widget{
+    width: 100%;
+}
+.twitter-card-name-title{
+    font-weight: bold;
+    margin: 0;
+}
+.twitter-card-name{
+    display: flex;
+    margin: 1% 0 0 5px;
+
+}
+.twitter-date-post{
+    color: gray;
+}
+.twitter-card-position{
+    margin: 0 0 0 5px;
+    width: 100%;
+}
+.twitter-card-position-title{
+    margin: 0;
+    color: gray;
+}
+.twitter-card-text{
+    width: 100%;
+    margin: 0 0 1.5% 0;
+}
+.twitter-card-text-p{
+    margin: 10px 0 0 1%;
+}
+.twitter-card-avatar{
+    width: 50px;
+}
+.sidebar-widget{
+    width: 30%;
+    border-left: 0.5px grey solid;
+    justify-content: center;
+}
+.container-form-search{
+    background-color: rgb(29, 155, 240);
+    margin-left: 5%;
+    border: 1px rgb(29, 155, 240) solid;
+    height: 33px;
+    border-radius: 20px;
+}
+.container-input-search{
+    padding: 8px 20px 8px 8px;
+    width: 65%;
+    margin-bottom: 2%;
+    border-radius: 20px 0 0 20px;
+    border: 1px rgb(29, 156, 240) solid;
+    outline: 1px rgb(29, 156, 240) solid;
+}
+.container-head-btn-search{
+    background-color: rgb(29, 155, 240);
+    border: 1px rgb(29, 155, 240) solid;
+    width: 24%;
+    color: white;
+    transition: all 0.1s;
+    padding: 8px 20px;
+    cursor: pointer;
+    border-radius: 0px 20px 20px 0px;
+}
+.container-head-btn-search:hover{
+    background-color: white;
+    color: rgb(29, 155, 240);
+}
+.twitter-card-widget{
+    display: flex;
+    margin-top: 1.5%;
+    width: 45%;
+    justify-content: space-between;
+    margin-left: 1%;
+}
+.comment-icon{
+    width: 20px;
+}
+.favourite-icon{
+    width: 20px;
+    margin-left: 3%;
+}
+.trash-icon{
+    width: 15px;
+    margin-left: 3%;
+}
+.twitter-card-widget div{
+    display: flex;
+    align-items: center;
+}
+.twitter-card-img{
+    margin-left: 1%;
+}
+.twitter-card-img img{
+    width: 50%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+.register{
+    display: flex;
+    justify-content: space-around;
+    font-weight: bold;
+    margin-left: 60px;
+}

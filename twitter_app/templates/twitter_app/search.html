@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+{{ quary }}
+{% endblock %}
+{% block content %}
+<p style="font-weight: bold; font-size: 25px;">По запросу '{{ quary }}' найдено:</p>
+
+<div>
+    {% for post in search_obj %}
+    <div class="twitter-card">
+        <div></div>
+        <div class="twitter-card-body-widget">
+            <div class="twitter-card-name">
+                <p class="twitter-card-name-title">{{ post.author }}</p>
+            </div>
+            <div class="twitter-card-img">
+                {% if post.image.url != null %}
+                <img src="{{ post.image.url }}">
+                {% endif %}
+            </div>
+            <div class="twitter-card-position">
+                <p class="twitter-card-position-title">{{ post.title }}</p>
+            </div>
+            <div class="twitter-card-text">
+                <p class="twitter-card-text-p">{{ post.text }}</p>
+            </div>
+            <div class="twitter-card-text">
+                <p class="twitter-card-text-p">{{ post.date }}</p>
+            </div>
+            <div class="twitter-card-widget">
+                <div class="comment-icon-widget">
+                    <a href="">
+                        <img class="comment-icon" src="{% static 'img/comment-solid.svg' %}" alt="comment">
+                    </a>
+                </div>
+                <div class="favourite-icon-widget">
+                    <a href="">
+                        <img class="favourite-icon" src="{% static 'img/heart-solid (1).svg' %}" alt="favourite">
+                    </a>
+                </div>
+                <div class="trash-icon-widget">
+                    <a href="{% url 'delete' post.id %}">
+                        <img class="trash-icon" src="{% static 'img/trash-can-solid.svg' %}" alt="delete">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <p>По запросу:{{ quary }} ничего нет</p>
+    {% endfor %}
+</div>
+{% endblock %}

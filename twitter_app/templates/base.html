@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-widget">
+            <div class="navbar-ico_widget">
+                <a  href="{% url 'index' %}"><img class="navbar_ico" src="{% static 'img/twitter.png' %}" alt=""></a>
+            </div>
+            <ul class="navbar-menu">
+                {% if not user.is_authenticated %}
+                <li class="navbar_li">
+                    <a href="{% url 'index' %}"><img class="navbar_img" src="{% static 'img/house-solid.svg' %}" alt="">Главная</a>
+                </li>
+                <li class="navbar_li">
+                    <a href="{% url 'regorlog' %}"><img class="navbar_img" src="{% static 'img/bookmark-solid.svg' %}" alt="">Избранное</a>
+                </li>
+                <li class="navbar_li">
+                    <a href="{% url 'regorlog' %}"><img class="navbar_img" src="{% static 'img/user-solid.svg' %}" alt="">Профиль</a>
+                </li>
+                {% else %}
+                <li class="navbar_li">
+                    <a href="{% url 'index' %}"><img class="navbar_img" src="{% static 'img/house-solid.svg' %}" alt="">Главная</a>
+                </li> 
+                <li class="navbar_li">
+                    <a href="{% url 'favourite' %}"><img class="navbar_img" src="{% static 'img/bookmark-solid.svg' %}" alt="">Избранное</a>
+                </li>
+                <li class="navbar_li">
+                    <a href="{% url 'index' %}"><img class="navbar_img" src="{% static 'img/user-solid.svg' %}" alt="">Профиль</a>
+                </li>
+                <li class="navbar_li">
+                    <a href="{% url 'logout' %}">Выйти</a>
+                </li>
+                {% endif %}           
+            </ul>
+            <div class="send-ad-widget">
+                <a href="">
+                    <button class="send-ad">Твитнуть</button>
+                </a>
+            </div>
+        </div>
+    </nav>
+    <main class="container">
+        {% block content %}
+        {% endblock %}
+    </main>
+    <div class="sidebar-widget">
+        <p>
+            <form class="container-form-search" action="{% url 'search_results' %}" method="get">
+                <input class="container-input-search" type="text" name="search" required>
+                <button class="container-head-btn-search">Поиск</button>
+            </form>
+        </p>
+    </div>
+</body>
+</html>

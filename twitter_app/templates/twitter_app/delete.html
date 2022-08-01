@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form action="{% url 'delete' post.id %}" method="POST">
+        {% csrf_token %}
+        <a style="display: flex;justify-content: center;"><button class="container-head-btn">удалить</button></a>
+    </form>
+{% endblock %}

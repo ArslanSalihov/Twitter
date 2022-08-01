@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Логин
+{% endblock %}
+{% block content %}
+<div class="container-head">
+    <h1 style="text-align: center;">Логин</h1>
+    <div>
+        <form action="{% url 'login' %}" method="POST">
+            <p>
+                <table>
+                {% csrf_token %}
+                    <tr>
+                        <th>
+                            {{ form.username.label_tag }}
+                        </th>
+                        <td>
+                            <input class="container-input" style="width: 100%;" type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="120" required="" id="id_username">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ form.password.label_tag }}
+                        </th>
+                        <td>
+                            <input class="container-input" style="width: 100%;" type="password" name="password" autocomplete="current-password" required="" id="id_password">
+                        </td>
+                    </tr>
+                </table>
+                <a style="display: flex;justify-content: center;"><button class="container-head-btn" >Логин</button></a>
+            </p>
+        </form>
+    </div>
+</div>
+{% endblock %}

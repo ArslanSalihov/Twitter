@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Избранное
+{% endblock %}
+{% block content %}
+<div class="container-top">
+    <p style="font-weight: bold; font-size: large; margin-bottom: 0;"><h3>Избранные объявления</h3></p>
+    <p style="color: gray; margin: 0;">{{ user.username }}</p>
+</div>
+<div class="container-body">
+    {% for post in post %}
+    <div class="twitter-card">
+        <div class="twitter-card-body-widget">
+            <div class="twitter-card-name">
+                <p class="twitter-card-name-title">{{ post.post.author }}</p>
+            </div>
+            <div class="twitter-card-img">
+                <img src="{{ post.post.image }}" alt="">                
+            </div>
+            <div class="twitter-card-position">
+                <p class="twitter-card-position-title">{{ post.post.title }}</p>
+            </div>
+            <div class="twitter-card-text">
+                <p class="twitter-card-text-p">{{ post.post.text }}</p>
+            </div>
+            <div class="twitter-card-text">
+                <p class="twitter-card-text-p">{{ post.post.date }}</p>
+            </div>
+            <div class="twitter-card-widget">
+                <div class="comment-icon-widget">
+                    <a href="">
+                        <img class="comment-icon" src="{% static 'img/comment-solid.svg' %}" alt="comment">
+                    </a>
+                </div>
+                <div class="favourite-icon-widget">
+                    <a href="{% url 'delete_favourite' post.id %}">
+                        <img class="favourite-icon" src="{% static 'img/heart-solid (1).svg' %}" alt="favourite">
+                    </a>
+                </div>
+                <div class="trash-icon-widget">
+                    <a href="{% url 'delete' post.id %}">
+                        <img class="trash-icon" src="{% static 'img/trash-can-solid.svg' %}" alt="delete">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="favourite-empty-widget">
+        <img src="{% static 'img/favourites.png' %}" alt="">
+        <p style="color: gray;">Пока что тут пусто вы можете добавить твит в избранное нажав на сердечко снизу твита</p>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+главная
+{% endblock %}
+{% block content %}
+<section class="container-head">
+    <p style="font-weight: bold;font-size: large;"><h1>Home</h1></p>
+    <form action="{% url 'create' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="container-head-widget">
+            <img class="user-icon" src="{% static 'img/circle-user-solid.svg' %}" alt="...">
+            <div class="container-head-widget-block">
+                <input class="container-input" type="text" name="title" required placeholder="название">
+                <textarea class="container-input" style="resize: none;" name="text"cols="45" rows="3" placeholder="напишите что-нибудь.."></textarea>
+            </div>
+        </div>
+        <div class="container-head-btn-widget">
+            <label for="photo">
+                <img class="image-icon" src="{% static 'img/image-solid.svg' %}" alt="...">
+                <input style="visibility: hidden;" type="file" name="image" id="photo">
+            </label>
+                <button class="container-head-btn">Твитнуть</button>
+        </div>
+    </form>    
+
+    <div class="container-body" >
+        {% for post in post %}
+        <div class="twitter-card">
+            <div class="twitter-card-body-widget">
+                <div class="twitter-card-name">
+                    <p class="twitter-card-name-title"><h3>{{ post.author }}</h3></p>
+                </div>
+                <div class="twitter-card-img">
+                    <img src="{{ post.image }}" alt="">                
+                </div>
+                <div class="twitter-card-position">
+                    <p class="twitter-card-position-title">{{ post.title }}</p>
+                </div>
+                <div class="twitter-card-text">
+                    <p class="twitter-card-text-p">{{ post.text }}</p>
+                </div>
+                <div class="twitter-card-text">
+                    <p class="twitter-card-text-p">{{ post.date }}</p>
+                </div>
+                <div class="twitter-card-widget">
+                    <div class="comment-icon-widget">
+                        <a href="{% url 'add_to_favourite' post.id %}">
+                        <img class="favourite-icon" src="{% static 'img/heart-solid (1).svg' %}" alt="favourite">
+                        </a>
+                        <a style="padding: 0 20px 0 20px;" href="{% url 'post_detail' post.id %}">
+                            <img class="comment-icon" src="{% static 'img/comment-solid.svg' %}" alt="comment">
+                        </a>
+                        <a href="{% url 'delete' post.id %}">
+                            <img class="trash-icon" src="{% static 'img/trash-can-solid.svg' %}" alt="delete">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</section>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <h1 style="text-align: center;"><p>Вы не зарегистрированы :/ </p></h1>
+    <div class="container-head-btn-widget">
+        <a style="text-decoration: none;" class="send-ad" href="{% url 'login' %}">Логин</a>
+        <a style="text-decoration: none;" class="send-ad" href="{% url 'register' %}">Регистрация</a>
+    </div>
+{% endblock %}

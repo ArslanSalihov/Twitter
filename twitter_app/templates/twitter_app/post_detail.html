@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+{{ post.title }}
+{% endblock %}
+{% block content %}
+<div class="twitter-card">
+    <div class="twitter-card-body-widget">
+        <div class="twitter-card-name">
+            <p class="twitter-card-name-title">{{ post.author }}</p>
+        </div>
+        <div class="twitter-card-position">
+            <p>{{ post.title }}</p>
+        </div>
+        <div class="twitter-card-img">
+            <img src="{{ post.image.url }}" alt="...">                
+        </div>
+        <div class="twitter-card-text">
+            <p class="twitter-card-text-p">{{ post.text }}</p>
+        </div>
+        <div class="twitter-card-text">
+            <p class="twitter-card-text-p">{{ post.date }}</p>
+        </div>
+    </div>
+</div>
+<hr>
+
+{% if user.is_authenticated %}
+<form action="{% url 'comment' post.id %}" method="POST">
+    {% csrf_token %}
+    <textarea class="container-input" style="width: 80%; resize: none;" name="body" placeholder="Оставьте комментарий"></textarea>
+    <button class="container-head-btn">Отправить</button>
+</form>
+{% else %}
+<div style="color: white; background-color: rgb(241, 10, 10); padding: 1px; border-radius: 5px;">
+    <p>
+        Незарегистрированные пользователи не могут оставлять комментарии. Чтобы оставить комментарий <a style="color: white;" href="{% url 'register' %}">зарегистрируйтесь</a>
+        или <a style="color: white;" href="{% url 'login' %}">войдите</a>.
+    </p>
+</div>
+{% endif %}
+
+{% for comment in post.comment_set.all  %}
+<div>
+    <h3>{{ comment.user.username }}</h3>
+    <p>{{ comment.body }}</p>
+    <p>{{ comment.date| timesince }} назад</p>
+</div>
+{% endfor %}
+
+{% endblock %}
